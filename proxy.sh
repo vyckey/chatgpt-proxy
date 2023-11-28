@@ -50,6 +50,7 @@ install() {
     apt-get update
     apt-get -y install --no-install-recommends openresty
     export PATH=$PATH:/usr/local/openresty/nginx/sbin
+    echo "export PATH=$PATH:/usr/local/openresty/nginx/sbin" > ~/.bash_rc
 
     echo "${GREEN}nginx has installed."
     nginx -V
@@ -91,7 +92,8 @@ stop() {
 
 test() {
     echo "ready to check proxy server health..."
-    curl http://locahost:80/api/health
+    echo "curl http://localhost:80/api/health"
+    curl http://localhost:80/api/health
 }
 
 action=$1
